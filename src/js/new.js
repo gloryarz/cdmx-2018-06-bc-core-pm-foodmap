@@ -65,7 +65,7 @@ const printArr = (newArr) => {
   placeLat = newArr[3];
   placeLng = newArr[4];
   let placeInfo = newArr[5];
-  searchResultAPI.innerHTML += `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#${placeID}">
+  searchResultAPI.innerHTML += `<button type="button" class="btn btn-outline-dark col-10 offset-1" data-toggle="modal" data-target="#${placeID}">
     ${placeName}
   </button>
   
@@ -92,14 +92,17 @@ const printArr = (newArr) => {
       </div>
     </div>
   </div>`;
+  initMap(placeLat, placeLng)
 };
 
 function initMap() {
+  console.log(placeLat, placeLng);
+  
   // The location of Uluru
   var googleLocation = {lat: placeLat, lng: placeLng};
   // The map, centered at Uluru
   var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 15, center: googleLocation});
+    document.getElementById('map'), {zoom: 15, center: googleLocation});
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: googleLocation, map: map});
 }
